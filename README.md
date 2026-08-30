@@ -1138,6 +1138,7 @@ Com a integração completa com o padrão MVVM e a arquitetura existente, o sist
 - [Documentação Técnica Zero-E-Mission](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Documenta%C3%A7%C3%A3o%20T%C3%A9cnica%20ZeroEMission.pdf) — Documentação Módulo Zero-E-Mission de qualidade de combustível
 - [Documentação Técnica Viscom](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Documenta%C3%A7%C3%A3o%20T%C3%A9cnica%20Viscom.pdf) — Documentação do Sistema de Visão Computacional Viscom
 - [Documentação de Planejamento](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Planejamento.pdf) — Documentação de planejamento de todo o projeto
+- [Plano de Testes](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Plano%20de%20Testes/PlanoTeste.md) - Planejamento de testes do sistema
  
 ---
 
