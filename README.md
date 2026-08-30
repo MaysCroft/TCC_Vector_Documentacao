@@ -8,6 +8,20 @@ Alunos: Maycon Siqueira de Moraes, Pedro Henrique Moura da Silva <br>
 Curso: Desenvolvimento de Sistemas <br>
 Instrutor: Frederico Martins Aguiar <br>
 
+<div align="center">
+
+### 🖥️ Linguagens e Frameworks
+![.NET C#](https://img.shields.io/badge/.NET_C%23-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![.NET 8](https://img.shields.io/badge/.NET_8-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![WPF](https://img.shields.io/badge/WPF-5C2D91?style=for-the-badge&logo=windows&logoColor=white)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+
+### 🗄️ Banco de Dados
+![Database](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=SQLite&logoColor=white)
+
+</div>
+
 ## Sumário
 
 - [1. Visão Geral](#1-visão-geral)
@@ -28,8 +42,9 @@ Instrutor: Frederico Martins Aguiar <br>
   - [8.2 Módulo Zero-E-Mission (Tradicional)](#82-módulo-zero-e-mission-tradicional)
   - [8.3 Módulo Viscom](#83-módulo-viscom)
 - [9. Modelagens](#9-modelagens)
-  - [9.1 Diagrama Físico Entidade-Relacionamento (MER)](#91-diagrama-físico-entidade-relacionamento-mer)
-  - [9.2 Modelagem de Domínio](#92-modelagem-de-domínio)
+  - [9.1 Modelagem Física](#91-modelagem-física)
+  - [9.2 Modelagem Lógica](#92-modelagem-lógica)
+  - [9.3 Modelagem de Domínio](#93-modelagem-de-domínio)
 - [10. Código do Arduino](#10-código-do-arduino)
 - [11. Código do WPF](#11-código-do-wpf)
 - [12. Levantamento de Requisitos](#12-levantamento-de-requisitos)
@@ -147,7 +162,7 @@ Este módulo gerencia a captura de vídeo em tempo real, processamento de imagen
 ### Diagrama de Fluxo
 
 <p align="center">
-  <img src="./Diagramas/Diagrama%20de%20Fluxo%201%20-%20ZeroEMission.png" alt="Fluxo ZeroEMission" />
+  <img src="./Diagramas/Diagrama%20de%20Fluxo%201%20-%20ZeroEMission.png" alt="Fluxo Módulo Tradicional" />
 </p>
 
 "A imagem acima detalha o fluxo de funcionamento do software com base nas interações do usuário e as respostas de leituras das amostras de combustivel"
@@ -155,7 +170,7 @@ Este módulo gerencia a captura de vídeo em tempo real, processamento de imagen
 ### Fluxograma
 
 <p align="center">
-  <img src="./Fluxogramas/Fluxograma%201%20-%20ZeroEMission.jpg" alt="Fluxo ZeroEMission" />
+  <img src="./Fluxogramas/Fluxograma%201%20-%20ZeroEMission.jpg" alt="Fluxograma ZeroEMission" />
 </p>
 
 "As figuras acima demonstram o fluxo da aplicação Tradicional, iniciando pela validação da conexão do sistema (via modo simulado com variáveis fixas ou integração com o Arduino), 
@@ -181,7 +196,7 @@ flowchart LR
 ### Diagrama de Fluxo
 
 <p align="center">
-  <img src="./Diagramas/Diagrama%20de%20Fluxo%202%20-%20Viscom.png" alt="Fluxo Viscom" />
+  <img src="./Diagramas/Diagrama%20de%20Fluxo%202%20-%20Viscom.png" alt="Fluxo Módulo Viscom" />
 </p>
 
 "O diagrama acima descreve o fluxo de funcionamento do sistema de visão computacional de acordo com a interação do usuário e a resposta da análise do frame de imagem."
@@ -189,7 +204,7 @@ flowchart LR
 ### Fluxograma
 
 <p align="center">
-  <img src="./Fluxogramas/Fluxograma%202%20-%20Viscom.jpg" alt="Fluxo Viscom" />
+  <img src="./Fluxogramas/Fluxograma%202%20-%20Viscom.jpg" alt="Fluxograma Módulo Viscom" />
 </p>
 
 "As figuras acima demonstram o fluxo do módulo de visão computacional Viscom, detalhando as etapas de captura e processamento de imagem: inicializa a câmera, 
@@ -462,18 +477,26 @@ A tabela estrutural para propriedades lidas nos testes em tempo real por visão 
 
 ## 9. Modelagens
 
-### 9.1 Diagrama Físico Entidade-Relacionamento (MER)
+### 9.1 Modelagem Física
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/2f610acc-4c6c-44d8-86ab-dd788761fbd5" width="1424" height="903" alt="Diagrama Mer" />
+  <img src="./Modelagens/Modelagem%20F%C3%ADsica.jpg" alt="Diagrama Mer" />
 </p>
 
-"O Diagrama Entidade-Relacionamento (MER) do sistema Vector – Zero Emission representa a estrutura lógica dos dados que serão armazenados no banco de dados SQLite. Este modelo é fundamental para compreender como as informações são organizadas, persistidas e relacionadas entre si, servindo como base para a implementação do banco de dados via Entity Framework Core."
+O modelo físico complementa essa arquitetura ao demonstrar a disposição dos componentes de software e periféricos na infraestrutura computacional. Na extremidade de entrada, a câmera USB e os sensores instalados nos tanques realizam a coleta de dados e os transmitem para a estação de trabalho através de portas USB e conexões seriais. O computador executa a aplicação desktop em conjunto com bibliotecas de visão computacional e drivers seriais, utilizando o armazenamento local para salvar arquivos CSV, bancos de dados e relatórios de diagnóstico em disco. Na ponta de atuação, os sinais de resposta são roteados para um microcontrolador Arduino, que comanda o módulo relé para acionar o motor de teste sempre que a amostra de combustível atinge os critérios de aprovação.
 
-### 9.2 Modelagem de Domínio
+### 9.2 Modelagem Lógica
 
 <p align="center">
-  <img src="./Modelagens/Modelagem%20de%20Dom%C3%ADnio%20Macro.png" alt="Diagrama de Domínio" />
+  <img src="./Modelagens/Modelagem%20L%C3%B3gica.jpg" alt="Modelagem Lógica" />
+</p>
+
+O modelo lógico do sistema organiza as funcionalidades da aplicação em quatro camadas complementares que conectam os operadores ao fluxo de trabalho de análise de combustível. Na camada de apresentação, a interface gráfica disponibiliza a exibição da câmera, mostradores analógicos em formato de gauge, indicadores visuais de conformidade e telas de calibração com mensagens interativas. A camada de regras de negócio processa a análise óptica de cor HSV e turbidez, a detecção de água nas amostras dos tanques, a classificação de qualidade e a estimativa de emissões evitadas. Dando suporte a essas operações, a camada de integração gerencia o fluxo de vídeo, o tráfego de comandos por comunicação serial e a exportação de dados, enquanto a camada de dados e rastreabilidade consolida os registros no banco de dados, no histórico de análises e nos logs de auditoria.
+
+### 9.3 Modelagem de Domínio
+
+<p align="center">
+  <img src="./Modelagens/Modelagem%20de%20Dom%C3%ADnio%20Macro.jpg" alt="Modelagem de Domínio" />
 </p>
 
 "O Zero-E-Mission centraliza e processa informações em tempo real vindas de duas fontes: ele recebe os dados dos sensores de análise de combustível por meio de uma porta serial (módulo Tradicional) e coordena as capturas de imagem de uma câmera conectada via USB (módulo Viscom). Por fim, todas as leituras, logs e dados operacionais coletados são gravados diretamente em um banco de dados SQLite local, permitindo que todo o conjunto funcione de forma independente e autônoma."
@@ -1108,13 +1131,13 @@ Com a integração completa com o padrão MVVM e a arquitetura existente, o sist
 
 ## 14. Documentação
  
-- [Modelo Conceitual](./Banco%20de%20Dados/1%20-%20Modelo%20Conceitual.png) — Diagrama entidade-relacionamento conceitual
-- [Modelo Lógico](./Banco%20de%20Dados/2%20-%20Modelo%20L%C3%B3gico.png) — Estrutura lógica do banco de dados
-- [Modelo Físico](./Banco%20de%20Dados/3%20-%20Modelo%20F%C3%ADsico.png) — Script e estrutura física do banco
-- [Documentação Integra Senai](./Documenta%C3%A7%C3%A3o%20Integra%20Vector.pdf) — Documentação necessária para TCC
-- [Documentação Técnica Zero-E-Mission](./Documenta%C3%A7%C3%A3o%20T%C3%A9cnica%20ZeroEMission.pdf) — Documentação Módulo Zero-E-Mission de qualidade de combustível
-- [Documentação Técnica Viscom](./Documenta%C3%A7%C3%A3o%20T%C3%A9cnica%20Viscom.pdf) — Documentação do Sistema de Visão Computacional Viscom
-- [Documentação de Planejamento](./Planejamento.pdf) — Documentação de planejamento de todo o projeto
+- [Modelo Conceitual](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Banco%20de%20Dados/1%20-%20Modelo%20Conceitual.png) — Diagrama entidade-relacionamento conceitual
+- [Modelo Lógico](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Banco%20de%20Dados/2%20-%20Modelo%20L%C3%B3gico.png) — Estrutura lógica do banco de dados
+- [Modelo Físico](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Banco%20de%20Dados/3%20-%20Modelo%20F%C3%ADsico.png) — Script e estrutura física do banco
+- [Documentação Integra Senai](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Documenta%C3%A7%C3%A3o%20Integra%20Vector.pdf) — Documentação necessária para TCC
+- [Documentação Técnica Zero-E-Mission](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Documenta%C3%A7%C3%A3o%20T%C3%A9cnica%20ZeroEMission.pdf) — Documentação Módulo Zero-E-Mission de qualidade de combustível
+- [Documentação Técnica Viscom](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Documenta%C3%A7%C3%A3o%20T%C3%A9cnica%20Viscom.pdf) — Documentação do Sistema de Visão Computacional Viscom
+- [Documentação de Planejamento](https://github.com/MaysCroft/TCC_Vector_Documentacao/blob/main/Planejamento.pdf) — Documentação de planejamento de todo o projeto
  
 ---
 
@@ -1139,3 +1162,15 @@ Com a integração completa com o padrão MVVM e a arquitetura existente, o sist
 ---
 
 ## 16. Referências Bibliográficas
+Microsoft. (2025). Baixar .NET 8.0 (Linux, macOS e Windows) | .NET. [online] Available at: https://dotnet.microsoft.com/pt-br/download/dotnet/8.0 [Accessed 15 July 2026].
+GitHub. OpenCV: Open Source Computer Vision Library Available at: https://github.com/opencv/opencv [Accessed 15 July 2026].
+Ministério do Desenvolvimento, Indústria, Comércio e Serviços. (2026). Programa MOVER. [online] Available at: https://www.gov.br/mdic/pt-br/assuntos/sdic/setor-automotivo/programa-mover.
+BillWagner (n.d.). Documentação do .NET. [online] learn.microsoft.com. 
+Available at: https://learn.microsoft.com/pt-br/dotnet/.
+ajcvickers (n.d.). Visão geral do Entity Framework Core – EF Core. [online] learn.microsoft.com. Available at: https://learn.microsoft.com/pt-br/ef/core/ .
+sqlite.org. (n.d.). SQLite Documentation. [online] 
+Available at: https://sqlite.org/docs.html.
+GrantMeStrength (2025). Espaços de cor HSV - Win32 apps. [online] MicrosoftLearn. Available at: https://learn.microsoft.com/pt-br/windows/win32/wcs/hsv-color-spaces.
+Dominic, D. (2024). A Beginner’s Guide to understand the HSV Color Model. [online] Medium. 
+Available at: https://medium.com/@dijdomv01/a-beginners-guide-to-understand-the-color-models-rgb-and-hsv-244226e4b3e3.
+
